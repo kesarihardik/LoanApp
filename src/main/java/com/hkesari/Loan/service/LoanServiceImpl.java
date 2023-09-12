@@ -2,14 +2,17 @@ package com.hkesari.Loan.service;
 import com.hkesari.Loan.DAO.LoanRepository;
 import com.hkesari.Loan.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class LoanServiceImpl implements LoanService {
-  private LoanRepository loanRepository;
+  private final LoanRepository loanRepository;
   @Autowired
   public LoanServiceImpl(LoanRepository loanRepository){
     this.loanRepository = loanRepository;
@@ -21,24 +24,24 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public Loan findById(String id) {
-    Optional<Loan> res = loanRepository.findById(id);
-
-    Loan theLoan = null;
-
-    if(res.isPresent()){
-      theLoan =res.get();
-    }
-    else throw new RuntimeException("There is no loan in the loan store with the id : " + id);
-
-    return theLoan;
+  public ResponseEntity<?> findById(String id) {
+    Optional<Loan> loan = loanRepository.findById(id);
+    if(loan.isEmpty())
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Loan id - "+id+" could not be found.");
+    return ResponseEntity.ok(loan.get());
   }
 
   @Override
-  public String save(Loan loan) {
-    System.out.println(loan.getPaymentDate());
-      loanRepository.save(loan);
-      return ("Loan with id-" + loan.getLoanId()+ " added to the loan store."+ loan.getPaymentDate());
+  public ResponseEntity<?> save(Loan loan) {
+    if(loan.getPaymentDate().after(loan.getDueDate())){
+      return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Payment date can't be greater than due date. Loan rejected.");
+    }
+    return ResponseEntity.status(HttpStatus.CREATED).body(loan);
+  }
+
+  @Override
+  public ResponseEntity<?> updateLoan(String id, Loan loanBody) {
+    return null;
   }
 
   @Override
@@ -50,4 +53,6 @@ public class LoanServiceImpl implements LoanService {
   public List<Object[]> customerData() {
     return loanRepository.getDueAmountByCustomer();
   }
+
+
 }

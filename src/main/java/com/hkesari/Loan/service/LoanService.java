@@ -1,17 +1,21 @@
 package com.hkesari.Loan.service;
 
 import com.hkesari.Loan.entity.Loan;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface LoanService {
     List<Loan> findAll();
 
-    Loan findById(String Id);
+    ResponseEntity<?> findById(String Id);
 
-    String save(Loan loan);
+    ResponseEntity<?> save(Loan loan);
+
+    ResponseEntity<?> updateLoan(String id, Loan loanBody);
 
     List<Object[]> lenderData();
 
     List<Object[]> customerData();
+
 }

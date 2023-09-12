@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface LoanRepository extends JpaRepository<Loan, String> {
 
+    //Custom logic
+
     //Remaining amount group by lender_Id, customer_Id, & interest
     @Query("SELECT l.lenderId,sum(l.amount) Amount FROM Loan l GROUP BY l.lenderId")
     List<Object[]> getLentAmountByLender();
