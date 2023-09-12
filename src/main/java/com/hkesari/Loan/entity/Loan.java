@@ -1,5 +1,6 @@
 package com.hkesari.Loan.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -29,12 +30,15 @@ public class Loan{
     private double amount;
     @Column(name="REMAINING_AMOUNT")
     private double remainingAmount;
+    @JsonFormat(pattern = "MM/dd/yyyy")
     @Column(name="PAYMENT_DATE")
     private Date paymentDate;
     @Column(name="INTEREST_PER_DAY")
     private String interestPerDay;
+    @JsonFormat(pattern = "MM/dd/yyyy")
     @Column(name="DUE_DATE")
     private Date dueDate;
     @Column(name="PENALTY_PER_DAY")
     private String penaltyPerDay;
+
 }
