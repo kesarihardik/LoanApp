@@ -1,5 +1,7 @@
-package com.hkesari.Loan.entity;
+package com.hkesari.Loan.models;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,8 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Date;
 
 @Entity
 @Table(name="LOANS")
@@ -33,13 +33,13 @@ public class Loan{
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name="PAYMENT_DATE")
     private Date paymentDate;
-    @Column(name="INTEREST_PER_DAY")
-    private String interestPerDay;
+    @Column(name="INTEREST_PER_DAY", precision = 10, scale = 5)
+    private BigDecimal interestPerDay;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name="DUE_DATE")
     private Date dueDate;
-    @Column(name="PENALTY_PER_DAY")
-    private String penaltyPerDay;
+    @Column(name="PENALTY_PER_DAY", precision = 10, scale = 5)
+    private BigDecimal penaltyPerDay;
 
 }

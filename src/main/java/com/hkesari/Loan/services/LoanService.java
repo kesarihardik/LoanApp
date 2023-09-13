@@ -1,9 +1,9 @@
-package com.hkesari.Loan.service;
+package com.hkesari.Loan.services;
 
-import com.hkesari.Loan.entity.Loan;
-import org.springframework.http.ResponseEntity;
+import com.hkesari.Loan.models.Loan;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LoanService {
     List<Loan> findAll();
@@ -11,8 +11,6 @@ public interface LoanService {
     Loan findById(String Id);
 
     Loan save(Loan loan);
-
-    Loan updateLoan(String id, Loan loanBody);
 
     List<Loan> getDefaulters();
 

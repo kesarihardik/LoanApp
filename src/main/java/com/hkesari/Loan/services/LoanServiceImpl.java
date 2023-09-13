@@ -1,10 +1,8 @@
-package com.hkesari.Loan.service;
+package com.hkesari.Loan.services;
 import com.hkesari.Loan.DAO.LoanRepository;
-import com.hkesari.Loan.entity.Loan;
+import com.hkesari.Loan.models.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 import java.util.List;
 import java.util.Optional;
 
@@ -30,15 +28,14 @@ public class LoanServiceImpl implements LoanService {
 
   @Override
   public Loan save(Loan loan) {
+    Optional<Loan> l =  loanRepository.findById(loan.getLoanId());
+    if(l.isPresent())
+      throw new RuntimeException("Loan with given id - "+loan.getLoanId()+" already present.");
+
     if(loan.getPaymentDate().after(loan.getDueDate())){
       throw new RuntimeException("Payment Date can't be greater than due date. Loan Rejected.");
     }
     return loanRepository.save(loan);
-  }
-
-  @Override
-  public Loan updateLoan(String id, Loan loanBody) {
-    return null;
   }
 
   @Override
@@ -55,6 +52,5 @@ public class LoanServiceImpl implements LoanService {
   public List<Object[]> customerData() {
     return loanRepository.getDueAmountByCustomer();
   }
-
 
 }

@@ -1,6 +1,6 @@
 package com.hkesari.Loan.DAO;
 
-import com.hkesari.Loan.entity.Loan;
+import com.hkesari.Loan.models.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,6 +17,7 @@ public interface LoanRepository extends JpaRepository<Loan, String> {
     @Query("SELECT l.customerId,sum(l.amount) Amount FROM Loan l GROUP BY l.customerId")
     List<Object[]> getDueAmountByCustomer();
 
+
     @Query("SELECT l FROM Loan l WHERE l.remainingAmount>0 and l.dueDate < CURRENT_TIMESTAMP()")
-    List<Loan> getDefaulters()   ;
+    List<Loan> getDefaulters() ;
 }

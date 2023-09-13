@@ -1,12 +1,13 @@
-package com.hkesari.Loan.controller;
+package com.hkesari.Loan.controllers;
 
-import com.hkesari.Loan.entity.Loan;
-import com.hkesari.Loan.service.LoanService;
+import com.hkesari.Loan.models.Loan;
+import com.hkesari.Loan.services.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/loans")
 @RestController
@@ -44,10 +45,6 @@ public class LoanController {
           return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(ex.getMessage());
       }
   }
-
-    //  @PutMapping("/loans/{id}")
-//    public ResponseEntity<String> updateLoan(@PathVariable String id, @RequestBody Loan loanBody){
-
 
   @GetMapping("/defaulters")
     public ResponseEntity<Object> getDefaulters() {

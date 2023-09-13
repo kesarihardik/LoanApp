@@ -1,11 +1,13 @@
 package com.hkesari.Loan;
-import com.hkesari.Loan.service.LoanService;
+import com.hkesari.Loan.services.LoanService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class LoanApplication {
 
 	public static void main(String[] args) {
