@@ -16,4 +16,7 @@ public interface LoanRepository extends JpaRepository<Loan, String> {
 
     @Query("SELECT l.customerId,sum(l.amount) Amount FROM Loan l GROUP BY l.customerId")
     List<Object[]> getDueAmountByCustomer();
+
+    @Query("SELECT l FROM Loan l WHERE l.remainingAmount>0 and l.dueDate < CURRENT_TIMESTAMP()")
+    List<Loan> getDefaulters()   ;
 }

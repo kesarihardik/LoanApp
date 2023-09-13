@@ -8,11 +8,13 @@ import java.util.List;
 public interface LoanService {
     List<Loan> findAll();
 
-    ResponseEntity<?> findById(String Id);
+    Loan findById(String Id);
 
-    ResponseEntity<?> save(Loan loan);
+    Loan save(Loan loan);
 
-    ResponseEntity<?> updateLoan(String id, Loan loanBody);
+    Loan updateLoan(String id, Loan loanBody);
+
+    List<Loan> getDefaulters();
 
     List<Object[]> lenderData();
 

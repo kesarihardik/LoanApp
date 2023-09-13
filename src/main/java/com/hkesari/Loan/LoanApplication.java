@@ -14,7 +14,7 @@ public class LoanApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(LoanService loanService){
 		return runner->{
-			System.out.println("Loan Application Started.");
+			System.out.println("Loan Application Started...");
 		};
 	}
 
