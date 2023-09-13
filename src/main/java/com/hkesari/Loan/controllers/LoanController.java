@@ -36,7 +36,7 @@ public class LoanController {
   }
 
   @PostMapping("/")
-  ResponseEntity<Object> addEmployee(@RequestBody Loan loan){
+  public ResponseEntity<Object> addLoan(@RequestBody Loan loan){
       try{
           Loan loanBody = loanService.save(loan);
           return ResponseEntity.status(HttpStatus.CREATED).body(loanBody);
