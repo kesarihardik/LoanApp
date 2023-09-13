@@ -71,5 +71,33 @@ public class LoanApplicationTests {
     }
 
 
+    //test - defaulter list
+    @Test
+    void testDefaulterList(){
+        try{
+            Loan l1=  new Loan("L404","C1","LEN1",10000,5000,
+                    new Date("05/04/2022"),
+                    new BigDecimal(0.01),new Date("05/03/2022"),new BigDecimal(0.0001));
+            loanController.addLoan(l1);
+            ResponseEntity responseEntity = loanController.getDefaulters();
+            Assertions.assertEquals(ResponseEntity.status(HttpStatus.OK).build(), responseEntity);
+            Assertions.assertNotEquals(responseEntity,null);
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Test
+    void testGetAllLoans(){
+        try {
+            List<Loan> loans = loanController.getLoans().getBody();
+            Assertions.assertEquals(2, loans.size());
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
 
 }
