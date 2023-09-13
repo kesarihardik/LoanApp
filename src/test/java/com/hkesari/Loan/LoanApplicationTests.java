@@ -17,9 +17,6 @@ import java.util.List;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class LoanApplicationTests {
-    @Test
-    void contextLoads(){}
-
     @Autowired
     private LoanController loanController;
 
