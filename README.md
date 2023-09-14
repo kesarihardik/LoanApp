@@ -1,10 +1,8 @@
 # Loan Transaction Application Assignment
-***
 
-Loan application for storing loan transactions.
+A loan application for storing loan transactions.
 
-
-## Given Conditions
+## Given Conditions 
 
 There is a scenario where thousands of loans are flowing into one store, assume any way of
 transmission of Loans. We need to create a one loan store, which store the loans in the following
@@ -18,15 +16,19 @@ order
    Lender, Group by Interest and Group by Customer ID.
 3. If the Loan crosses the due date, it should write an alert in the log message.
 
-## Architecture 
-***
+# Languages/ Frameworks used 
+
+- Java 17  
+- Spring Boot 3.1.3
+
+## Architecture
 
 There are 4 layers of the application -
 
 ### 1. Database Layer
 
 The application uses an in memory and relational database H2 to keep the design minimal and simple.
-It is already populated with some records on initialization.
+It is already populated with some records on initialization stored in 
 
 ### 2. Data Access Layer 
 
@@ -37,6 +39,7 @@ The data access layer is responsible for storing, updating and retrieval of reco
 The service layer is where all the business logic and validation is kept. It is the middles layer between data access layer and the user.
 
  There are two services in this application
+
 1. One that interacts with the data access layer.
 2. Other service contains scheduled tasks.
 
@@ -47,9 +50,10 @@ This layer exposes the endpoints to the user for data manipulation, fetching and
 
 
 ## Testing 
-****
 
 The controller layer is tested using JUnit framework based on the principle of Red-Green factor.
 Test Cases try to cover all the possible test cases.
+You can check the test cases in `LoanApp/src/test/java/com/hkesari/Loan
+/LoanApplicationTests.java`
 
 
