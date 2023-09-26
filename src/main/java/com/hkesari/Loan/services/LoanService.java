@@ -1,7 +1,7 @@
 package com.hkesari.Loan.services;
 
 import com.hkesari.Loan.models.Loan;
-
+import java.util.Map;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,5 +17,4 @@ public interface LoanService {
     List<Object[]> lenderData();
 
     List<Object[]> customerData();
-
 }

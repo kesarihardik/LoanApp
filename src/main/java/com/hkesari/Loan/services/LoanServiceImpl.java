@@ -1,8 +1,9 @@
 package com.hkesari.Loan.services;
-import com.hkesari.Loan.DAO.LoanRepository;
+import com.hkesari.Loan.dao.LoanRepository;
 import com.hkesari.Loan.models.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 

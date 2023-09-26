@@ -1,4 +1,4 @@
-package com.hkesari.Loan.DAO;
+package com.hkesari.Loan.dao;
 
 import com.hkesari.Loan.models.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
