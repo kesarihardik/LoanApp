@@ -7,14 +7,9 @@ import java.util.Optional;
 
 public interface LoanService {
     List<Loan> findAll();
-
     Loan findById(String Id);
-
     Loan save(Loan loan);
-
     List<Loan> getDefaulters();
-
-    List<Object[]> lenderData();
-
-    List<Object[]> customerData();
+    Double getLentAmount(String lenderId);
+    Double getBorrowedAmount(String customerId);
 }

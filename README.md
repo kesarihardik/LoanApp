@@ -93,17 +93,17 @@ Initial records in the database.
 
 ### Endpoints
 
-BaseURL : http://localhost:8080/loans/
+BaseURL : http://localhost:8080/loans
 
-1. Get all loans
+1. Get all loans (/)
 
 [GetLoans](images/get.png)
 
-2. Get a loan by id 
+2. Get a loan by id (/L1)
 
 ![getById](images/getById.png)
 
-3. Save Loan
+3. Save Loan (/)
 
 ![validCase](images/validSave.png)
 
@@ -111,7 +111,7 @@ BaseURL : http://localhost:8080/loans/
 
 ![invalidCase](images/invalidSave.png)
 
-4. Get defaulters list - Loans whose due date has already passed.
+4. Get defaulters list (/defaulters) - Loans whose due date has already passed.
  
 ![Defaulters](images/defaulters.png)
 
@@ -120,13 +120,13 @@ Also, this will log the records on startup.
 
 ![Defaulters](images/logging.png)
 
-5.Total money lent by a single lender
+5.Total money lent by a single lender (/lentAmount/LEN1)
 
-![LenderData](images/lenderData.png)
+![LenderData](images/lent.png)
 
-6.Total money borrowed by a single customer
+6.Total money borrowed by a single customer (borrowedAmount/C1)
 
-![customerData](images/customerData.png)
+![customerData](images/borrowedAmount.png)
 
 
 

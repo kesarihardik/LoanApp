@@ -1,7 +1,6 @@
 package com.hkesari.Loan.services;
-import com.hkesari.Loan.dao.LoanRepository;
+import com.hkesari.Loan.repository.LoanRepository;
 import com.hkesari.Loan.models.Loan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +9,9 @@ import java.util.Optional;
 @Service
 public class LoanServiceImpl implements LoanService {
   private final LoanRepository loanRepository;
-  @Autowired
   public LoanServiceImpl(LoanRepository loanRepository){
     this.loanRepository = loanRepository;
   }
-
   @Override
   public List<Loan> findAll() {
     return loanRepository.findAll();
@@ -23,7 +20,7 @@ public class LoanServiceImpl implements LoanService {
   @Override
   public Loan findById(String id) {
     Optional<Loan> loan =  loanRepository.findById(id);
-    if(!loan.isPresent()) throw new RuntimeException("Loan with given id - "+id+" couldn't be found.");
+    if(loan.isEmpty()) throw new RuntimeException("Loan with given id - "+id+" couldn't be found.");
     return loan.get();
   }
 
@@ -45,13 +42,13 @@ public class LoanServiceImpl implements LoanService {
   }
 
   @Override
-  public List<Object[]> lenderData() {
-    return loanRepository.getLentAmountByLender();
+  public Double getLentAmount(String lenderId) {
+    return loanRepository.getLentAmountByLender(lenderId);
   }
 
   @Override
-  public List<Object[]> customerData() {
-    return loanRepository.getDueAmountByCustomer();
+  public Double getBorrowedAmount(String customerId) {
+    return loanRepository.getBorrowedAmountForCustomer(customerId);
   }
 
 }

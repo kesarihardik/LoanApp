@@ -1,5 +1,4 @@
 package com.hkesari.Loan;
-import com.hkesari.Loan.services.LoanService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +13,7 @@ public class LoanApplication {
 		SpringApplication.run(LoanApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner commandLineRunner(LoanService loanService){
+	public CommandLineRunner commandLineRunner(){
 		return runner->{
 			System.out.println("Loan Application Started...");
 		};
