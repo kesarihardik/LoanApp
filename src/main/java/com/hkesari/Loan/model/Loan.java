@@ -1,4 +1,4 @@
-package com.hkesari.Loan.models;
+package com.hkesari.Loan.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -7,10 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name="LOANS")
@@ -18,6 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Loan{
     @Id
     @Column(name="LOAN_ID")
